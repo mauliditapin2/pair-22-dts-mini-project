@@ -35,9 +35,8 @@ const ListMovies = () => {
 
   return (
     <div>
-      <Typography>Popular Movie</Typography>
+      <Typography sx>Popular Movie</Typography>
       <OwlCarousel
-        
         loop
         items={6}
         autoplay
