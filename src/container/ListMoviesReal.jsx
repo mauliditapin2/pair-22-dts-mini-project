@@ -4,6 +4,9 @@ import tmdb from "../apis/tmdb";
 import React, { useEffect, useState } from "react";
 import { Box, Typography } from "@mui/material";
 
+import OwlCarousel from "react-owl-carousel";
+import "owl.carousel/dist/assets/owl.carousel.css";
+import "owl.carousel/dist/assets/owl.theme.default.css";
 // "./ListMovies.css";
 import CardMovie from "../component/CardMovie";
 
@@ -31,12 +34,20 @@ const ListMovies = () => {
   }, []);
 
   return (
-    
-    <Box  sx={{display: 'inline-flex',flexWrap: 'wrap', margin: 'auto', padding: 10 }}>
+    <div>
+      <Typography>Popular Movie</Typography>
+      <OwlCarousel
+        
+        loop
+        items={6}
+        autoplay
+        stagePadding={50}
+      >
         {movies.map((movie) => {
-        return <CardMovie movie={movie} />;
-      })}  
-    </Box>
+          return <CardMovie movie={movie} />;
+        })}
+      </OwlCarousel>
+    </div>
   );
 };
 
