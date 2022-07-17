@@ -1,7 +1,7 @@
 // Sekarang pada ProtectedComponent, kita tetap harus menggunakan useEffect
 // Agar terlepas dari Warning yang diberikan
 // (useNavigate harus di dalam useEffect)
-import React, { useEffect } from "react";
+import  { useEffect } from "react";
 
 // Di sini kita akan akan menggunakan hooks:
 // - untuk mendeteksi user sudah login (useAuthState)

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 
 //import styles from "./LoginOrRegisterForm.module.css";
 
-import { Grid, Box, Button, TextField, Typography, Paper } from "@mui/material";
+import {  Box, Button, TextField, Typography, Paper } from "@mui/material";
 import { Link } from "react-router-dom";
 
 import { useNavigate } from "react-router-dom";
@@ -39,7 +39,7 @@ const LoginOrRegisterForm = ({ loginOrRegister }) => {
   // user: akan mengembalikan auth.User apabila ada yang log in, dan null bila tidak ada
   // loading: boolean yang digunakan sebagai indikator apakah firebasenya sedang menunggu login
   // error: bila ada error yang diberikan
-  const [user, isLoading, error] = useAuthState(auth);
+  const [user, isLoading] = useAuthState(auth);
 
   const [credential, setCredential] = useState({
     email: "",

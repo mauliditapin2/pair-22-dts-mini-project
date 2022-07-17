@@ -1,7 +1,5 @@
 import React from "react";
 import Box from "@mui/material/Box";
-import { TextField, Paper,Button, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
 import LoginOrRegisterForm from "../component/LoginOrRegisterForm";
 
 export default function Login() {

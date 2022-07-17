@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Nav, Navbar, NavDropdown, Image } from "react-bootstrap";
+import { Container, Nav, Navbar } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { keluarDariApps } from "../authentication/firebase";
 import image from "../assets/images/image 3.png";
@@ -13,8 +13,6 @@ import { auth } from "../authentication/firebase";
 export default function Header() {
   const navigate = useNavigate();
   const [user] = useAuthState(auth);
-  let button;
-  let button2;
   // if(user === null){
   //   button = <Link style={{textDecoration: 'none', color: 'white'}} to="/Login">Login</Link>;
   //   button2 = "";
@@ -46,10 +44,10 @@ export default function Header() {
             <Nav.Link ><Link style={{textDecoration: 'none', color: 'white'}} to="/">My List</Link></Nav.Link>
           </Nav>
           <Nav className="justify-content-end">
-            <Nav.Link href="#home"><img width='15em' src={cari}/> </Nav.Link>
+            <Nav.Link href="#home"><img  alt="" width='15em' src={cari}/> </Nav.Link>
             <Nav.Link style={{color: 'white',}}  disabled>{user !== null ? user.email : ""}</Nav.Link>
-            <Nav.Link href="#home"><img width='15em' src={fill}/> </Nav.Link>
-            <Nav.Link href="#home"><img width='15em' src={lonceng}/> </Nav.Link>
+            <Nav.Link href="#home"><img width='15em' src={fill} alt=""/> </Nav.Link>
+            <Nav.Link href="#home"><img width='15em' src={lonceng}  alt=""/> </Nav.Link>
             <Nav.Link >{user !== null ? <Button variant="contained" onClick={buttonLogoutOnClickHandler}>Logout</Button> : <Link type="button" class="btn btn-success" style={{textDecoration: 'none', color: 'white'}} to="/Login">Login</Link>}</Nav.Link>
             
           </Nav>
