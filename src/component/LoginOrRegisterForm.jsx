@@ -113,12 +113,13 @@ const LoginOrRegisterForm = ({ loginOrRegister }) => {
   );
 
   return (
-    <Box>
+    <Box >
       <Paper
         elevation={3}
         sx={{
-          padding: "6em",
-          width: "60em",
+          padding: "3em",
+          width: "40em",
+          margin: 'auto'
         }}
       >
         <Typography

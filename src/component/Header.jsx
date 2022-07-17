@@ -32,7 +32,7 @@ export default function Header() {
     <Navbar bg="dark" variant="dark" expand="lg">
       <Container>
         <Navbar.Brand href="#home">
-          <img width="40em" style={{ marginRight: "5em" }} src={image} />
+          <img alt="" width="40em" style={{ marginRight: "5em" }} src={image} />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
