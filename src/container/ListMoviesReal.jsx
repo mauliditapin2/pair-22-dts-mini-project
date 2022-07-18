@@ -35,7 +35,7 @@ const ListMovies = () => {
 
   return (
     <div>
-      <Typography sx>Popular Movie</Typography>
+      <Typography sx={{padding: '1em',backgroundColor: '#3E065F', textTransform: 'uppercase', color: 'white', margin: '1em'}}>Popular Movie</Typography>
       <OwlCarousel
         loop
         items={6}
