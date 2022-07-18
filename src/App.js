@@ -13,7 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route
-          path="/DetailFilm"
+          path="/DetailFilm/:MovieID"
           element={
             <ProtectedComponent>
               <DetailFilm />

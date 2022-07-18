@@ -22,15 +22,16 @@ const DetailMovie = () => {
 
   const [movies, setMovies] = useState([]);
   let params = useParams();
+
   useEffect(() => {
-    // const chosenAnimal = params.movies.id;
+    const MovieID = params.MovieID;
 
     const fetchDataMovies = async () => {
       try {
         // Gunakan instance tmdb di sini
         const responseDariTMDB = await tmdb.get(
           // Nah di sini kita tidak perlu menuliskan terlalu panjang lagi
-          "/movie/507086"
+          `/movie/${MovieID}`
         );
         // Jangan lupa set statenya
         // Perhatikan di sini responseDariTMDB ada .data (response schema axios)
@@ -58,29 +59,37 @@ const DetailMovie = () => {
       >
         MOVIE DETAIL
       </Typography>
-
-      <Card className="boxy" sx={{ margin: "5px" }}>
-        <Box sx={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)" }}>
+      <Card className="boxy" sx={{ margin: "5px" , padding: '2em'}}>
+        <Box className="boxy" sx={{ width: "70em", margin:'auto' }}>
+          <CardMedia
+            component="img"
+            image={`${baseUrlForMovie}${movies.backdrop_path}`}
+            alt={movies.title}
+          ></CardMedia>
+        </Box>
+        <Box sx={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)" , margin: 'auto', width: '70em'}}>
           <Box className="boxy" sx={{ width: "20em" }}>
             <CardMedia
               component="img"
               image={`${baseUrlForMovie}${movies.poster_path}`}
               alt={movies.title}
             ></CardMedia>
-            
           </Box>
-          
-          <Box className="boxy" sx={{ width: '100%', textAlign: 'left'}}>
-            <Typography variant="h3" sx={{textAlign: 'center'}}>{movies.title}</Typography>
-            <br/><br/><br/>
+
+          <Box className="boxy" sx={{ width: "100%", textAlign: "left", marginLeft: '-5em' }}>
+            <Typography variant="h3" sx={{ textAlign: "center" }}>
+              {movies.title}
+            </Typography>
+            <br />
             <Typography>Release Date : {movies.release_date}</Typography>
             <Rating value={movies.vote_average / 2} precision={0.1} readOnly />
-            <br/><br/><br/>
+            <br />
+            <br />
             <Typography>Tagline : {movies.tagline}</Typography>
-            <br/>
+            <br />
             <Typography>Overvie : {movies.overview}</Typography>
-            <br/>
-            <Typography>Country : {movies.spoken_languages.name}</Typography>
+            <br />
+            <Typography>Original Language : {movies.original_language}</Typography>
           </Box>
         </Box>
       </Card>

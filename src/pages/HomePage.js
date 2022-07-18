@@ -13,6 +13,7 @@ export default function HomePage() {
 
         <div style={{  alignContent: 'center', alignItems: 'center'}}>
         <ListMoviesReal/>
+        
         <Footer/>
         </div>    
     </div>

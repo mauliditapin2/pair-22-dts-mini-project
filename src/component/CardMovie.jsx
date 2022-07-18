@@ -17,7 +17,7 @@ const CardMovie = (props) => {
   return (
     // di sini kita menggunakan Component Card dari MUI
     <Card className="boxy" sx={{ margin: '5px' }}>
-      <Link style={{ textDecoration: "none" }} to={`/DetailFilm/`}>
+      <Link style={{ textDecoration: "none" }} to={`/DetailFilm/${props.movie.id}`}>
         <Box className="boxy">
           <CardMedia
             component="img"
