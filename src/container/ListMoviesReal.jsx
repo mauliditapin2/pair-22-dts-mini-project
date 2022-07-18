@@ -2,7 +2,7 @@
 import tmdb from "../apis/tmdb";
 
 import React, { useEffect, useState } from "react";
-import {  Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
@@ -34,19 +34,43 @@ const ListMovies = () => {
   }, []);
 
   return (
-    <div>
-      <Typography sx={{padding: '1em',backgroundColor: '#3E065F', textTransform: 'uppercase', color: 'white', margin: '1em'}}>Popular Movie</Typography>
-      <OwlCarousel
+    <Box sx={{ padding: "1em", backgroundColor: "#8E05C2" }}>
+      <Typography
+        sx={{
+          padding: "1em",
+          color: "#8E05C2",
+          backgroundColor: "white",
+          fontWeight: "bold",
+          margin: "auto",
+          width: "30em",
+          borderTopLeftRadius: "40px",
+          borderTopRightRadius: "40px",
+        }}
+      >
+        POPULAR MOVIE
+      </Typography>
+      <Box
+        component="div"
+        sx={{
+          display: "grid",
+          gridTemplateColumns: "repeat(6, 1fr)",
+          marginBottom: "1em",
+          marginTop: '1em'
+        }}
+      >
+        {/* <OwlCarousel
         loop
         items={6}
         autoplay
         stagePadding={50}
-      >
+      > */}
         {movies.map((movie) => {
           return <CardMovie movie={movie} />;
         })}
-      </OwlCarousel>
-    </div>
+
+        {/* </OwlCarousel> */}
+      </Box>
+    </Box>
   );
 };
 
