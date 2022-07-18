@@ -26,7 +26,7 @@ const CardMovie = (props) => {
           ></CardMedia>
           <CardContent>
             <Typography component="div" variant="body1">
-              {props.movie.id}
+              {props.movie.title}
             </Typography>
             <Rating
               value={props.movie.vote_average / 2}

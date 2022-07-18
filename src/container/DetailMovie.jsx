@@ -2,20 +2,29 @@
 import tmdb from "../apis/tmdb";
 
 import React, { useEffect, useState } from "react";
-import { Box, Typography,Pagination , Stack  } from "@mui/material";
-import { useParams } from 'react-router-dom';
-import OwlCarousel from "react-owl-carousel";
+import {
+  Box,
+  Card,
+  CardMedia,
+  CardContent,
+  Rating,
+  Typography,
+} from "@mui/material";
+import { useParams } from "react-router-dom";
+//import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 // "./ListMovies.css";
 import CardMovie from "../component/CardMovie";
 
 const DetailMovie = () => {
+  const baseUrlForMovie = "https://image.tmdb.org/t/p/w300";
+
   const [movies, setMovies] = useState([]);
   let params = useParams();
   useEffect(() => {
-   // const chosenAnimal = params.movie.id;
-  
+    // const chosenAnimal = params.movies.id;
+
     const fetchDataMovies = async () => {
       try {
         // Gunakan instance tmdb di sini
@@ -25,7 +34,7 @@ const DetailMovie = () => {
         );
         // Jangan lupa set statenya
         // Perhatikan di sini responseDariTMDB ada .data (response schema axios)
-        setMovies(responseDariTMDB.data.results);
+        setMovies(responseDariTMDB.data);
       } catch (err) {
         console.log(err);
       }
@@ -47,31 +56,34 @@ const DetailMovie = () => {
           borderTopRightRadius: "40px",
         }}
       >
-        POPULAR MOVIE
+        MOVIE DETAIL
       </Typography>
-      
-      <Box
-        component="div"
-        sx={{
-          display: "grid",
-          gridTemplateColumns: "repeat(6, 1fr)",
-          marginBottom: "1em",
-          marginTop: '1em',
-          width: '100%'
-        }}
-      >
-        {/* <OwlCarousel
-        loop
-        items={6}
-        autoplay
-        stagePadding={50}
-      > */}
-        {movies.map((movie) => {
-          return <CardMovie movie={movie} />;
-        })}
 
-        {/* </OwlCarousel> */}
-      </Box>
+      <Card className="boxy" sx={{ margin: "5px" }}>
+        <Box sx={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)" }}>
+          <Box className="boxy" sx={{ width: "20em" }}>
+            <CardMedia
+              component="img"
+              image={`${baseUrlForMovie}${movies.poster_path}`}
+              alt={movies.title}
+            ></CardMedia>
+            
+          </Box>
+          
+          <Box className="boxy" sx={{ width: '100%', textAlign: 'left'}}>
+            <Typography variant="h3" sx={{textAlign: 'center'}}>{movies.title}</Typography>
+            <br/><br/><br/>
+            <Typography>Release Date : {movies.release_date}</Typography>
+            <Rating value={movies.vote_average / 2} precision={0.1} readOnly />
+            <br/><br/><br/>
+            <Typography>Tagline : {movies.tagline}</Typography>
+            <br/>
+            <Typography>Overvie : {movies.overview}</Typography>
+            <br/>
+            <Typography>Country : {movies.spoken_languages.name}</Typography>
+          </Box>
+        </Box>
+      </Card>
     </Box>
   );
 };
