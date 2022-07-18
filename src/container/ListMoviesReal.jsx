@@ -2,7 +2,7 @@
 import tmdb from "../apis/tmdb";
 
 import React, { useEffect, useState } from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography,Pagination , Stack  } from "@mui/material";
 
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
@@ -21,7 +21,6 @@ const ListMovies = () => {
           // Nah di sini kita tidak perlu menuliskan terlalu panjang lagi
           "/movie/popular"
         );
-
         // Jangan lupa set statenya
         // Perhatikan di sini responseDariTMDB ada .data (response schema axios)
         setMovies(responseDariTMDB.data.results);
@@ -29,16 +28,15 @@ const ListMovies = () => {
         console.log(err);
       }
     };
-
     fetchDataMovies();
   }, []);
 
   return (
-    <Box sx={{ padding: "1em", backgroundColor: "#8E05C2" }}>
+    <Box sx={{ padding: "1em", backgroundColor: "#3E065F" }}>
       <Typography
         sx={{
           padding: "1em",
-          color: "#8E05C2",
+          color: "#3E065F",
           backgroundColor: "white",
           fontWeight: "bold",
           margin: "auto",
@@ -49,13 +47,15 @@ const ListMovies = () => {
       >
         POPULAR MOVIE
       </Typography>
+      
       <Box
         component="div"
         sx={{
           display: "grid",
           gridTemplateColumns: "repeat(6, 1fr)",
           marginBottom: "1em",
-          marginTop: '1em'
+          marginTop: '1em',
+          width: '100%'
         }}
       >
         {/* <OwlCarousel
