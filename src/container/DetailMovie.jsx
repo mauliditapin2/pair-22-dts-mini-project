@@ -2,15 +2,9 @@
 import tmdb from "../apis/tmdb";
 
 import React, { useEffect, useState } from "react";
-import {
-  Box,
-  Card,
-  CardMedia,
-  Rating,
-  Typography,
-} from "@mui/material";
+import { Box, Card, CardMedia, Rating, Typography } from "@mui/material";
 import { useParams } from "react-router-dom";
-
+import { Table } from "react-bootstrap";
 
 const DetailMovie = () => {
   const baseUrlForMovie = "https://image.tmdb.org/t/p/w300";
@@ -47,47 +41,62 @@ const DetailMovie = () => {
           backgroundColor: "white",
           fontWeight: "bold",
           margin: "auto",
-          width: "30em",
-          borderTopLeftRadius: "40px",
-          borderTopRightRadius: "40px",
+          width: "100%",
         }}
       >
         MOVIE DETAIL
       </Typography>
-      <Card className="boxy" sx={{ margin: "5px" , padding: '2em'}}>
-        <Box className="boxy" sx={{ width: "70em", margin:'auto' }}>
-          <CardMedia
-            component="img"
-            image={`${baseUrlForMovie}${movies.backdrop_path}`}
-            alt={movies.title}
-          ></CardMedia>
-        </Box>
-        <Box sx={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)" , margin: 'auto', width: '70em'}}>
-          <Box className="boxy" sx={{ width: "20em" }}>
+
+      <Table>
+        <tr>
+          <td width="30%">
             <CardMedia
               component="img"
               image={`${baseUrlForMovie}${movies.poster_path}`}
               alt={movies.title}
+              sx={{ width: "100%" }}
             ></CardMedia>
-          </Box>
-
-          <Box className="boxy" sx={{ width: "100%", textAlign: "left", marginLeft: '-5em' }}>
-            <Typography variant="h3" sx={{ textAlign: "center" }}>
-              {movies.title}
-            </Typography>
-            <br />
-            <Typography>Release Date : {movies.release_date}</Typography>
-            <Rating value={movies.vote_average / 2} precision={0.1} readOnly />
-            <br />
-            <br />
-            <Typography>Tagline : {movies.tagline}</Typography>
-            <br />
-            <Typography>Overvie : {movies.overview}</Typography>
-            <br />
-            <Typography>Original Language : {movies.original_language}</Typography>
-          </Box>
-        </Box>
-      </Card>
+          </td>
+          <td style={{ backgroundColor: "white", padding: "5em" }}>
+            <Table striped bordered hover>
+              <tr>
+                <td>
+                  <Typography variant="h3" sx={{ textAlign: "center" }}>
+                    {movies.title}
+                  </Typography>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <Typography>Release Date : {movies.release_date}</Typography>
+                  <Rating
+                    value={movies.vote_average / 2}
+                    precision={0.1}
+                    readOnly
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <Typography>Tagline : {movies.tagline}</Typography>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <Typography>Overvie : {movies.overview}</Typography>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <Typography>
+                    Original Language : {movies.original_language}
+                  </Typography>
+                </td>
+              </tr>
+            </Table>
+          </td>
+        </tr>
+      </Table>
     </Box>
   );
 };

@@ -2,14 +2,24 @@
 import tmdb from "../apis/tmdb";
 
 import React, { useEffect, useState } from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, CardContent, CardMedia, Rating, Typography } from "@mui/material";
 
-import CardMovie from "../component/CardMovie";
-import OwlCarousel from "react-owl-carousel";
-import "owl.carousel/dist/assets/owl.carousel.css";
-import "owl.carousel/dist/assets/owl.theme.default.css";
-const ListMovies2 = () => {
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+
+// import required modules
+import { Autoplay, Pagination, Navigation } from "swiper";
+
+import { Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
+
+const ListMovieTop = () => {
   const [movies, setMovies] = useState([]);
+  const baseUrlForMovie = "https://image.tmdb.org/t/p/w300";
 
   useEffect(() => {
     const fetchDataMovies = async () => {
@@ -30,40 +40,78 @@ const ListMovies2 = () => {
   }, []);
 
   return (
-    <Box sx={{ padding: "1em", backgroundColor: "#3E065F" }}>
+    <>
       <Typography
         sx={{
           padding: "1em",
-          color: "#3E065F",
-          backgroundColor: "white",
-          fontWeight: "bold",
-          margin: "auto",
-          width: "30em",
-          borderTopLeftRadius: "40px",
-          borderTopRightRadius: "40px",
+          textAlign: "center",
+          backgroundColor: "#3E065F",
+          color: "white",
+          margin: "1em",
         }}
       >
-        POPULAR MOVIE
+        TOP RATED
       </Typography>
+      <Swiper
+        breakpoints={{
 
-      <Box
-        component="div"
-        sx={{
-          display: "grid",
-          gridTemplateColumns: "repeat(1, 1fr)",
-          marginBottom: "1em",
-          marginTop: "1em",
-          width: "100%",
+        0: {
+          slidesPerView: 2,
+        },
+        
+        600: {
+          slidesPerView: 5,
+        },
+        700: {
+          slidesPerView: 7,
+        },
+        1000: {
+          slidesPerView: 9,
+        }
         }}
+        spaceBetween={5}
+        autoplay
+
+        navigation={true}
+        modules={[Autoplay, Pagination, Navigation]}
+        className="mySwiper"
       >
-        <OwlCarousel loop items={6} autoplay stagePadding={50}>
-          {movies.map((movie) => {
-            return <CardMovie movie={movie} />;
-          })}
-        </OwlCarousel>
-      </Box>
-    </Box>
+        {movies.map((movie) => {
+          return (
+            <SwiperSlide key={movie.id}>
+              <Card className="boxy" sx={{ margin: "5px" }}>
+                <Link
+                  style={{ textDecoration: "none" }}
+                  to={`/DetailFilm/${movie.id}`}
+                >
+                  <Box className="boxy" sx={{ width: "10em" }}>
+                    <CardMedia
+                      component="img"
+                      image={`${baseUrlForMovie}${movie.poster_path}`}
+                      alt={movie.title}
+                    ></CardMedia>
+                    <CardContent>
+                      <Typography component="div" variant="body1">
+                        {movie.title}
+                      </Typography>
+                      <Rating
+                        value={movie.vote_average / 2}
+                        precision={0.1}
+                        readOnly
+                      />
+                      <Typography variant="body2">
+                        Release date: {movie.release_date}
+                      </Typography>
+                    </CardContent>
+                  </Box>
+                </Link>
+              </Card>
+            </SwiperSlide>
+          );
+        })}
+      </Swiper>
+    </>
   );
 };
 
-export default ListMovies2;
+export default ListMovieTop;

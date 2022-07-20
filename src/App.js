@@ -6,6 +6,7 @@ import DetailFilm from "./pages/DetailFilm";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ProtectedComponent from "./component/ProtectedComponent";
+import ListMovieAsli from "./container/ListMovieAsli";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         />
         <Route path="/Login" element={<Login />} />
         <Route path="/Register" element={<Register />} />
+        <Route path="/ListMovieAsli/:MovieType" element={<ListMovieAsli />} />
         {/* <Route path="about" element={<About />} /> */}
       </Routes>
     </div>

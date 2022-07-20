@@ -38,10 +38,9 @@ export default function Header() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link ><Link style={{textDecoration: 'none', color: 'white'}} to="/">Home</Link></Nav.Link>
-            <Nav.Link ><Link style={{textDecoration: 'none', color: 'white'}} to="/">Series</Link></Nav.Link>
-            <Nav.Link ><Link style={{textDecoration: 'none', color: 'white'}} to="/">Movies</Link></Nav.Link>
-            <Nav.Link ><Link style={{textDecoration: 'none', color: 'white'}} to="/">New and Popular</Link></Nav.Link>
-            <Nav.Link ><Link style={{textDecoration: 'none', color: 'white'}} to="/">My List</Link></Nav.Link>
+            <Nav.Link ><Link style={{textDecoration: 'none', color: 'white'}} to="/" >TV</Link></Nav.Link>
+            <Nav.Link ><Link style={{textDecoration: 'none', color: 'white'}} to="/" >Movies</Link></Nav.Link>
+            <Nav.Link ><Link style={{textDecoration: 'none', color: 'white'}} to="/" >Top Rated</Link></Nav.Link>
           </Nav>
           <Nav className="justify-content-end">
             <Nav.Link href="#home"><img  alt="" width='15em' src={cari}/> </Nav.Link>
