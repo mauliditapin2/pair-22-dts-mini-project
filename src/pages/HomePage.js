@@ -10,10 +10,8 @@ export default function HomePage() {
     <div>
         <Header/>
         <Slideshow/>
-
         <div style={{  alignContent: 'center', alignItems: 'center'}}>
         <ListMoviesReal/>
-        
         <Footer/>
         </div>    
     </div>

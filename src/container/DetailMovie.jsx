@@ -6,16 +6,11 @@ import {
   Box,
   Card,
   CardMedia,
-  CardContent,
   Rating,
   Typography,
 } from "@mui/material";
 import { useParams } from "react-router-dom";
-//import OwlCarousel from "react-owl-carousel";
-import "owl.carousel/dist/assets/owl.carousel.css";
-import "owl.carousel/dist/assets/owl.theme.default.css";
-// "./ListMovies.css";
-import CardMovie from "../component/CardMovie";
+
 
 const DetailMovie = () => {
   const baseUrlForMovie = "https://image.tmdb.org/t/p/w300";
