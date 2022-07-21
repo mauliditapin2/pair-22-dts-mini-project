@@ -35,11 +35,7 @@ const DetailMovie = () => {
       >
         MOVIE DETAIL
       </Typography>
-
-      <Table>
-        <tr>
-          <td style={{ backgroundColor: "white", padding: "5em" }}>
-            <Table striped bordered hover>
+            <Table striped bordered hover style={{ backgroundColor: "white", padding: "5em" }}>
               <tr>
                 <td rowSpan={6} style={{display:'flex'}}>
                   <CardMedia
@@ -51,8 +47,8 @@ const DetailMovie = () => {
                 </td>
               </tr>
               <tr>
-                <td>
-                  <Typography variant="h3" sx={{ textAlign: "center" }}>
+                <td style={{textAlign: "center"}}>
+                <Typography variant="h3" sx={{  textTransform: 'uppercase', margin:'auto' }}>
                     {movies.title}
                   </Typography>
                 </td>
@@ -99,9 +95,6 @@ const DetailMovie = () => {
                 </td>
               </tr>
             </Table>
-          </td>
-        </tr>
-      </Table>
     </Box>
   );
 };
