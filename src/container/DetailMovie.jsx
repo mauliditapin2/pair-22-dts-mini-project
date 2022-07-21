@@ -1,36 +1,25 @@
 // di sini kita import apis/tmdb.js
 import tmdb from "../apis/tmdb";
-
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Box, Card, CardMedia, Rating, Typography } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { Table } from "react-bootstrap";
-
+import YouTube from "react-youtube";
 const DetailMovie = () => {
   const baseUrlForMovie = "https://image.tmdb.org/t/p/w300";
 
   const [movies, setMovies] = useState([]);
   let params = useParams();
-
-  useEffect(() => {
-    const MovieID = params.MovieID;
-
-    const fetchDataMovies = async () => {
-      try {
-        // Gunakan instance tmdb di sini
-        const responseDariTMDB = await tmdb.get(
-          // Nah di sini kita tidak perlu menuliskan terlalu panjang lagi
-          `/movie/${MovieID}`
-        );
-        // Jangan lupa set statenya
-        // Perhatikan di sini responseDariTMDB ada .data (response schema axios)
-        setMovies(responseDariTMDB.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    fetchDataMovies();
+  const MovieID = params.MovieID;
+  const baseURL = `https://api.themoviedb.org/3/movie/${MovieID}?api_key=556ecd387272c98def9d1545c8a02076&append_to_response=videos`;
+  React.useEffect(() => {
+    axios.get(baseURL).then((response) => {
+      setMovies(response.data);
+    });
   }, []);
+
+  if (!movies) return null;
 
   return (
     <Box sx={{ padding: "1em", backgroundColor: "#3E065F" }}>
@@ -49,16 +38,18 @@ const DetailMovie = () => {
 
       <Table>
         <tr>
-          <td width="30%">
-            <CardMedia
-              component="img"
-              image={`${baseUrlForMovie}${movies.poster_path}`}
-              alt={movies.title}
-              sx={{ width: "100%" }}
-            ></CardMedia>
-          </td>
           <td style={{ backgroundColor: "white", padding: "5em" }}>
             <Table striped bordered hover>
+              <tr>
+                <td rowSpan={6} style={{display:'flex'}}>
+                  <CardMedia
+                    component="img"
+                    image={`${baseUrlForMovie}${movies.poster_path}`}
+                    alt={movies.title}
+                    sx={{ minWidth: "5em", maxWidth: "20em" }}
+                  ></CardMedia>
+                </td>
+              </tr>
               <tr>
                 <td>
                   <Typography variant="h3" sx={{ textAlign: "center" }}>
@@ -93,19 +84,24 @@ const DetailMovie = () => {
                   </Typography>
                 </td>
               </tr>
+              <tr>
+                <td>
+                  <YouTube
+                    videoId={movies.videos?.results[0].key}
+                    style={{ width: "100%" }}
+                  />
+                </td>
+                <td>
+                  <YouTube
+                    videoId={movies.videos?.results[1].key}
+                    style={{ width: "100%" }}
+                  />
+                </td>
+              </tr>
             </Table>
           </td>
         </tr>
       </Table>
-      <iframe
-        width="100%"
-        height="500em"
-        frameborder="0"
-        src="https://www.youtube.com/embed/6JnN1DmbqoU?controls=0"
-        title="YouTube video player"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-      ></iframe>
     </Box>
   );
 };
