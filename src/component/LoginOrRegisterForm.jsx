@@ -3,9 +3,9 @@ import React, { useEffect, useState } from "react";
 
 //import styles from "./LoginOrRegisterForm.module.css";
 
-import {  Box, Button, TextField, Typography, Paper } from "@mui/material";
+import { Box, Button, TextField, Typography, Paper } from "@mui/material";
 import { Link } from "react-router-dom";
-
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useNavigate } from "react-router-dom";
 
 // Pada bagian ini sekarang kita membutuhkan fungsi untuk melakukan login dan register
@@ -113,14 +113,14 @@ const LoginOrRegisterForm = ({ loginOrRegister }) => {
   );
 
   return (
-    <div style={{}} >
+    <div style={{}}>
       <Paper
         elevation={3}
         sx={{
-          margin: 'auto',
-          minWidth: '22em',
-          padding: '1em',
-          maxWidth: '35em'
+          margin: "auto",
+          minWidth: "20em",
+          padding: "1em",
+          maxWidth: "35em",
         }}
       >
         <Typography
@@ -131,7 +131,7 @@ const LoginOrRegisterForm = ({ loginOrRegister }) => {
             fontWeight: "bold",
           }}
         >
-          {loginOrRegister === "login" ? "Halaman Login " : "Daftar"}
+          {loginOrRegister === "login" ? "Login " : "Daftar"}
         </Typography>
 
         <TextField
@@ -145,7 +145,7 @@ const LoginOrRegisterForm = ({ loginOrRegister }) => {
         <br />
         <br />
         <TextField
-          label="password"
+          label="Password"
           type="Password"
           variant="outlined"
           fullWidth
@@ -159,19 +159,32 @@ const LoginOrRegisterForm = ({ loginOrRegister }) => {
           fullWidth
           onClick={buttonLoginOrRegisterOnClickHandler}
         >
-          {loginOrRegister === "login" ? "Login" : "Register Account"}
+          {loginOrRegister === "login" ? "Login" : "Register"}
         </Button>
         <br />
         <br />
+        
         {loginOrRegister === "login" ? (
-          <Link to="/register" variant="info " >
-            <Button variant="outlined" fullWidth={true}>Atau Daftar Dulu Yuk ?</Button>
+          <Link to="/register" variant="info ">
+            <Button variant="outlined" fullWidth={true}>
+              Atau Daftar Dulu Yuk ?
+            </Button>
           </Link>
         ) : (
-          <Link to="/login" variant="info" > 
-            <Button variant="outlined" fullWidth={true}>Atau Langsung Login ?</Button>
+          <Link to="/login" variant="info">
+            <Button variant="outlined" fullWidth={true}>
+              Atau Langsung Login ?
+            </Button>
           </Link>
         )}
+        <br />
+        <br />
+        <Link to="/" variant="info ">
+          <Button variant="contained" startIcon={<ArrowBackIcon />}>
+            Kembali
+          </Button>
+        </Link>
+        
       </Paper>
     </div>
   );
