@@ -113,13 +113,14 @@ const LoginOrRegisterForm = ({ loginOrRegister }) => {
   );
 
   return (
-    <Box >
+    <div style={{}} >
       <Paper
         elevation={3}
         sx={{
-          padding: "3em",
-          width: "40em",
-          margin: 'auto'
+          margin: 'auto',
+          minWidth: '22em',
+          padding: '1em',
+          maxWidth: '35em'
         }}
       >
         <Typography
@@ -163,16 +164,16 @@ const LoginOrRegisterForm = ({ loginOrRegister }) => {
         <br />
         <br />
         {loginOrRegister === "login" ? (
-          <Link to="/register">
-            <Typography variant="body1">Atau Daftar Dulu Yuk ?</Typography>
+          <Link to="/register" variant="info " >
+            <Button variant="outlined" fullWidth={true}>Atau Daftar Dulu Yuk ?</Button>
           </Link>
         ) : (
-          <Link to="/login">
-            <Typography variant="body1">Atau Langsung Login ?</Typography>
+          <Link to="/login" variant="info" > 
+            <Button variant="outlined" fullWidth={true}>Atau Langsung Login ?</Button>
           </Link>
         )}
       </Paper>
-    </Box>
+    </div>
   );
 };
 

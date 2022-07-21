@@ -97,6 +97,15 @@ const DetailMovie = () => {
           </td>
         </tr>
       </Table>
+      <iframe
+        width="100%"
+        height="500em"
+        frameborder="0"
+        src="https://www.youtube.com/embed/6JnN1DmbqoU?controls=0"
+        title="YouTube video player"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
     </Box>
   );
 };

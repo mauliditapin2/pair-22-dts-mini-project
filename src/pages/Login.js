@@ -8,8 +8,9 @@ export default function Login() {
         width: '100%',
         height: '100%',
         margin: 'auto',
-        background: `url("https://nerdmovieproductions.it/wp-content/uploads/2022/04/thor.jpg") no-repeat center center fixed` ,
-        padding: '10em'
+        backgroundColor: '#3E065F',
+        padding: '200px 50px 50px 50px',
+        position: 'fixed'
 
     }}>
       <LoginOrRegisterForm loginOrRegister={"login"} />
