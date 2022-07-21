@@ -55,20 +55,20 @@ const ListMovieTop = () => {
       <Swiper
         breakpoints={{
 
-        0: {
-          slidesPerView: 2,
-        },
-        
-        600: {
-          slidesPerView: 5,
-        },
-        700: {
-          slidesPerView: 7,
-        },
-        1000: {
-          slidesPerView: 9,
-        }
-        }}
+          0: {
+            slidesPerView: 2,
+          },
+          
+          600: {
+            slidesPerView: 4,
+          },
+          700: {
+            slidesPerView: 5,
+          },
+          1000: {
+            slidesPerView: 6,
+          }
+          }}
         spaceBetween={5}
         autoplay
 

@@ -35,22 +35,26 @@ const DetailMovie = () => {
       >
         MOVIE DETAIL
       </Typography>
-            <Table striped bordered hover style={{ backgroundColor: "white", padding: "5em" }}>
+            <Table responsive="md" striped border={1} hover style={{ backgroundColor: "white", padding: "5em" }}>
               <tr>
-                <td rowSpan={6} style={{display:'flex'}}>
+                <td style={{display:'flex', alignContent: 'center', alignItems: 'center'}}>
                   <CardMedia
                     component="img"
                     image={`${baseUrlForMovie}${movies.poster_path}`}
                     alt={movies.title}
-                    sx={{ minWidth: "5em", maxWidth: "20em" }}
+                    sx={{ minWidth: "5em",  }}
+                  ></CardMedia>
+                  <CardMedia
+                    component="img"
+                    image={`${baseUrlForMovie}${movies.belongs_to_collection?.poster_path}`}
+                    alt={movies.title}
+                    sx={{ minWidth: "5em",  }}
                   ></CardMedia>
                 </td>
               </tr>
               <tr>
-                <td style={{textAlign: "center"}}>
-                <Typography variant="h3" sx={{  textTransform: 'uppercase', margin:'auto' }}>
+                <td style={{textAlign: "center", fontSize: '2em', textTransform: 'uppercase'}}>
                     {movies.title}
-                  </Typography>
                 </td>
               </tr>
               <tr>
@@ -87,7 +91,9 @@ const DetailMovie = () => {
                     style={{ width: "100%" }}
                   />
                 </td>
-                <td>
+              </tr>
+              <tr>
+              <td>
                   <YouTube
                     videoId={movies.videos?.results[1].key}
                     style={{ width: "100%" }}

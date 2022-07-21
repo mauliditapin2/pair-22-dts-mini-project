@@ -60,13 +60,13 @@ const ListMovies = () => {
         },
         
         600: {
-          slidesPerView: 5,
+          slidesPerView: 4,
         },
         700: {
-          slidesPerView: 7,
+          slidesPerView: 5,
         },
         1000: {
-          slidesPerView: 9,
+          slidesPerView: 6,
         }
         }}
         spaceBetween={5}
