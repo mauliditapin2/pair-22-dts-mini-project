@@ -163,7 +163,7 @@ const LoginOrRegisterForm = ({ loginOrRegister }) => {
         </Button>
         <br />
         <br />
-        
+
         {loginOrRegister === "login" ? (
           <Link to="/register" variant="info ">
             <Button variant="outlined" fullWidth={true}>
@@ -184,7 +184,7 @@ const LoginOrRegisterForm = ({ loginOrRegister }) => {
             Kembali
           </Button>
         </Link>
-        
+
       </Paper>
     </div>
   );

@@ -93,12 +93,7 @@ const DetailMovie = () => {
                 </td>
               </tr>
               <tr>
-              <td>
-                  <YouTube
-                    videoId={movies.videos?.results[1].key}
-                    style={{ width: "100%" }}
-                  />
-                </td>
+              
               </tr>
             </Table>
     </Box>

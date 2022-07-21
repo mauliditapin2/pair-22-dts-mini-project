@@ -13,6 +13,7 @@ import {
   sendPasswordResetEmail,
   signOut,
 } from "firebase/auth";
+import { Alert } from "react-bootstrap";
 
 // Ini adalah konfigurasi yang di-copy dari halaman Firebase (SDK Setup and Configuration)
 // Kita pilih yang versi "config" saja
@@ -78,7 +79,8 @@ const loginDenganEmailDanPassword = async (email, password) => {
       auth,
       email,
       password
-    );
+    )
+
 
     console.log("User yang berhasil login adalah", userCredential.user);
   } catch (err) {

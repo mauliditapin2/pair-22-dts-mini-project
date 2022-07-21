@@ -8,7 +8,7 @@ export default function Register() {
       height: '100%',
       margin: 'auto',
       backgroundColor: '#3E065F',
-      padding: '200px 20px 20px 20px',
+      padding: '20px 20px 20px 20px',
       position: 'fixed'
 
     }}>
