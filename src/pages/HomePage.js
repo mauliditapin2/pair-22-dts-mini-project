@@ -14,7 +14,6 @@ export default function HomePage() {
         <Slideshow/>
         <div style={{  alignContent: 'center', alignItems: 'center'}}>
         <ListMoviesReal/>
-        <ListMovieAsli/>
         <ListMovieTop/>
         <Footer/>
         </div>    
